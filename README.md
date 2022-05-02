@@ -1,2 +1,2 @@
-# React
- react project
+# Study 일일커밋
+  공부한 내용 커밋
