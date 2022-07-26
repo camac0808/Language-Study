@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 export default function Detail() {
   const { id } = useParams();
   const [details, setDetails] = useState("");
-  const API_KEY = "72ed8cbf412c498da945dcfeedf4f583";
+  const API_KEY = "ea46da76162f45f8a179463a877ff12e";
 
   useEffect(() => {
     const getDetails = async () => {
@@ -24,7 +24,7 @@ export default function Detail() {
   console.log(details);
 
   return (
-    <div>
+    <div className="details">
       <h1>{details.name}</h1>
       <h3>{details && details.genres.map((g) => `${g.name} | `)}</h3>
       <img src={details.background_image} alt={details.name}></img>

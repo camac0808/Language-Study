@@ -1,8 +1,8 @@
 function Header() {
   return (
     <header>
-      <h1>My Project</h1>
-      <a href="../index.js">Login</a>
+      <h1>My Projects</h1>
+      <a className="login" href="../index.js">Login</a>
     </header>
   );
 }
