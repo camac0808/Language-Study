@@ -12,42 +12,81 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faN } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
-function Game({ id, name, image, genres, platforms, metacriticScore }) {
+function Game({ id, name, image, genres, platforms, metacriticScore, released }) {
+  const [infoHover, setInfoHover] = useState(false);
+
   return (
-    <div id={id} className="game" data-aos="fade-up" data-aos-delay="400">
-      <div className="game-card">
-        <Link to={`/games/${id}`}>
-          <img src={image} alt={name} />
-        </Link>
+    <div id={id} className="game" data-aos="fade-up" data-aos-delay="300">
+      <div
+        className="game-card"
+        onMouseOver={() => setInfoHover(true)}
+        onMouseOut={() => setInfoHover(false)}
+      >
+        <div className="game-img">
+          <img src={image} alt={name}></img>
+          {infoHover ? (
+            <Link to={`/games/${id}`}>
+              <button className="more-btn">More Details</button>
+            </Link>
+          ) : null}
+        </div>
 
         <div className="game-info">
+          <div>
+            {platforms.map((p, index) => {
+              if (p.platform.slug === "playstation") {
+                return (
+                  <FontAwesomeIcon
+                    key={index}
+                    icon={faPlaystation}
+                    style={{ marginRight: "4px" }}
+                  />
+                );
+              } else if (p.platform.slug === "pc") {
+                return (
+                  <FontAwesomeIcon key={index} icon={faWindows} style={{ marginRight: "4px" }} />
+                );
+              } else if (p.platform.slug === "xbox") {
+                return <FontAwesomeIcon key={index} icon={faXbox} style={{ marginRight: "4px" }} />;
+              } else if (p.platform.slug === "nintendo") {
+                return <FontAwesomeIcon key={index} icon={faN} style={{ marginRight: "4px" }} />;
+              } else if (p.platform.slug === "ios") {
+                return (
+                  <FontAwesomeIcon key={index} icon={faApple} style={{ marginRight: "4px" }} />
+                );
+              } else if (p.platform.slug === "android") {
+                return (
+                  <FontAwesomeIcon key={index} icon={faAndroid} style={{ marginRight: "4px" }} />
+                );
+              } else if (p.platform.slug === "linux") {
+                return (
+                  <FontAwesomeIcon key={index} icon={faLinux} style={{ marginRight: "4px" }} />
+                );
+              }
+            })}
+          </div>
           <Link to={`/games/${id}`}>
             <h3 className="game-info-title">{name}</h3>
           </Link>
-          <p>{genres.map((g) => `${g.name} | `)} </p>
 
-          <p>
-            {platforms.map((p) => {
-              if (p.platform.slug === "playstation") {
-                return <FontAwesomeIcon icon={faPlaystation} style={{ marginRight: "4px" }} />;
-              } else if (p.platform.slug === "pc") {
-                return <FontAwesomeIcon icon={faWindows} style={{ marginRight: "4px" }} />;
-              } else if (p.platform.slug === "xbox") {
-                return <FontAwesomeIcon icon={faXbox} style={{ marginRight: "4px" }} />;
-              } else if (p.platform.slug === "nintendo") {
-                return <FontAwesomeIcon icon={faN} style={{ marginRight: "4px" }} />;
-              } else if (p.platform.slug === "ios") {
-                return <FontAwesomeIcon icon={faApple} style={{ marginRight: "4px" }} />;
-              } else if (p.platform.slug === "android") {
-                return <FontAwesomeIcon icon={faAndroid} style={{ marginRight: "4px" }} />;
-              } else if (p.platform.slug === "linux") {
-                return <FontAwesomeIcon icon={faLinux} style={{ marginRight: "4px" }} />;
-              }
-            })}
-          </p>
-          <i className="bi bi-nintendo-switch"></i>
+          {infoHover ? (
+            <ul className="game-info-about">
+              <li className="genres">
+                <span>Genres:</span>
+                <span>{genres.map((g) => `${g.name} `)}</span>
+              </li>
+              <li className="released-date">
+                <span>Release Date:</span>
+                <span>{released}</span>
+              </li>
+            </ul>
+          ) : (
+            ""
+          )}
         </div>
+
         <CircularProgressbar
           className={metacriticScore == null ? "hidden" : "metacriticScore"}
           styles={buildStyles({

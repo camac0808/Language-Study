@@ -1,5 +1,7 @@
 import { faAngleRight, faAnglesRight, faAngleLeft, faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+
 
 const Pagination = ({ pageClick, count, currentPage }) => {
   let totalPage = Math.ceil(count / 20);
@@ -18,9 +20,9 @@ const Pagination = ({ pageClick, count, currentPage }) => {
   for (let i = firstPage; i <= lastPage; i++) {
     paginationHtml.push(
       <li className={currentPage === i ? "page-item active" : "page-item"} key={i}>
-        <a className="page-link pageNum" onClick={(event) => pageClick(i)} href="#pagemove">
+        <Link to={"/"} className="page-link pageNum" onClick={(event) => pageClick(i)}>
           {i}
-        </a>
+        </Link>
       </li>
     );
   }
@@ -33,34 +35,34 @@ const Pagination = ({ pageClick, count, currentPage }) => {
             className={`page-item ${firstPage === 1 ? "hidden" : ""}`}
             onClick={() => pageClick(1)}
           >
-            <a className="page-link" href="#js-bottom">
-            <FontAwesomeIcon icon={faAnglesLeft} />
-            </a>
+            <Link to={"/"} className="page-link">
+              <FontAwesomeIcon icon={faAnglesLeft} />
+            </Link>
           </li>
           <li
             className={`page-item ${firstPage === 1 ? "hidden" : ""}`}
             onClick={() => pageClick(prev)}
           >
-            <a className="page-link" href="#js-bottom">
-            <FontAwesomeIcon icon={faAngleLeft} />
-            </a>
+            <Link to={"/"} className="page-link">
+              <FontAwesomeIcon icon={faAngleLeft} />
+            </Link>
           </li>
           {paginationHtml}
           <li
             className={`page-item ${lastPage === totalPage ? "hidden" : ""}`}
             onClick={() => pageClick(next)}
           >
-            <a className="page-link" href="#js-program-detail-bottom">
+            <Link to={"/"} className="page-link">
               <FontAwesomeIcon icon={faAngleRight} />
-            </a>
+            </Link>
           </li>
           <li
             className={`page-item ${lastPage === totalPage ? "hidden" : ""}`}
             onClick={() => pageClick(totalPage)}
           >
-            <a className="page-link" href="#js-bottom">
-            <FontAwesomeIcon icon={faAnglesRight} />
-            </a>
+            <Link to={"/"} className="page-link">
+              <FontAwesomeIcon icon={faAnglesRight} />
+            </Link>
           </li>
         </ul>
       </nav>

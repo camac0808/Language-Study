@@ -10,12 +10,13 @@ function Home() {
   const [games, setGames] = useState([]);
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [slug, setSlug] = useState("");
 
   const API_KEY = "ea46da76162f45f8a179463a877ff12e";
   const getGames = async () => {
     try {
       const response = await fetch(
-        `https://api.rawg.io/api/games?page=${currentPage}&page_size=20&key=${API_KEY}`
+        `https://api.rawg.io/api/games?page=${currentPage}&search=${slug}&page_size=20&key=${API_KEY}`
       );
       const data = await response.json();
       setGames(data.results);
@@ -31,15 +32,25 @@ function Home() {
     getGames();
     console.log(currentPage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+  }, [currentPage, slug]);
 
   function pageMove(page) {
     setCurrentPage(page);
   }
 
+  function inputValue(value) {
+    setSlug(value);
+  }
+
+  function homeClick(event) {
+    event.preventDefault();
+    setSlug("");
+  }
+
+  console.log(slug);
   return (
     <div>
-      <Header />
+      <Header count={count} inputValue={inputValue} click={homeClick}/>
       <div className="container">
         {loading ? (
           <div className="loading">
@@ -49,7 +60,7 @@ function Home() {
             </div>
           </div>
         ) : (
-          <h1 className="main-title" data-aos="fade-up">All Games</h1>
+          <h2 className="main-title" data-aos="fade-up">{slug !== "" ? `"${slug}" search results...` : "All Games"}</h2>
         )}
         <main>
           <div className="game-container">
@@ -63,6 +74,7 @@ function Home() {
                   genres={game.genres}
                   platforms={game.parent_platforms}
                   metacriticScore={game.metacritic}
+                  released={game.released}
                 />
               );
             })}
