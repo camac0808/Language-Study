@@ -180,11 +180,25 @@ header h1:hover {
   color: rgb(240, 240, 240);
 }
 
+/* 사이드 메뉴바 */
+.sidebar {
+  background-color: #242226;
+  border: 2px solid #fff;
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* main container */
 .game-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px 20px;
 }
+
 
 .game {
   width: 300px;
@@ -227,6 +241,7 @@ header h1:hover {
   object-fit: cover;
 }
 
+/* more details button */
 .more-btn {
   width: 200px;
   height: 40px;
@@ -249,6 +264,7 @@ header h1:hover {
   color: #fff;
 }
 
+/* hover detailed info */
 .game-info {
   background-color: #242226;
   color: white;
@@ -304,6 +320,7 @@ header h1:hover {
   font-size: 15px;
 }
 
+/* 메타점수 */
 .metacriticScore {
   z-index: 10;
   position: absolute;
@@ -313,13 +330,16 @@ header h1:hover {
   bottom: -20px;
 }
 
+/* more details */
 .details {
   color: white;
 }
+
 .details img {
   width: 500px;
 }
 
+/* 파지네이션 */
 .pagination {
   margin: 60px 0;
 }
@@ -342,6 +362,7 @@ header h1:hover {
   background-color: #fff;
 }
 
+/* 
 footer {
   position: fixed;
   text-align: center;
@@ -352,7 +373,7 @@ footer {
 
 footer p {
   color: #ccc;
-}
+} */
 
 .hidden {
   display: none;

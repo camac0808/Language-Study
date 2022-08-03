@@ -4,6 +4,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Pagination from "./Pagination";
 import Header from "./Header";
+import Sidebar from "./Sidebar";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -45,12 +46,14 @@ function Home() {
   function homeClick(event) {
     event.preventDefault();
     setSlug("");
+    setCurrentPage(1);
   }
 
   console.log(slug);
   return (
     <div>
-      <Header count={count} inputValue={inputValue} click={homeClick}/>
+      <Sidebar />
+      <Header count={count} inputValue={inputValue} homeClick={homeClick}/>
       <div className="container">
         {loading ? (
           <div className="loading">
