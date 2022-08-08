@@ -8,9 +8,9 @@ function Header({ count, inputValue, homeClick }) {
         <h1>Home</h1>
       </Link>
       <Search count={count} inputValue={inputValue} />
-      <a className="login" href="../index.js">
+      <Link to={`/signup`} className="login" >
         Login
-      </a>
+      </Link>
     </header>
   );
 }

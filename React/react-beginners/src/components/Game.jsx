@@ -14,6 +14,7 @@ import { faN } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
+
 function Game({ id, name, image, genres, platforms, metacriticScore, released, rating }) {
   const [infoHover, setInfoHover] = useState(false);
 

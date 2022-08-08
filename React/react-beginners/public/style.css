@@ -184,7 +184,7 @@ header h1:hover {
 .sidebar {
   background-color: #242226;
   border: 2px solid #fff;
-  width: 220px;
+  width: 250px;
   height: 100vh;
   position: fixed;
   z-index: 1;
@@ -362,6 +362,45 @@ header h1:hover {
   background-color: #fff;
 }
 
+/* 로그인 페이지 */
+.form-signin {
+  max-width: 400px;
+  margin: 150px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-signin form {
+  width: 320px;
+  text-align: center;
+  border: 1px solid white;
+  padding: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255);
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
 /* 
 footer {
   position: fixed;
@@ -377,4 +416,8 @@ footer p {
 
 .hidden {
   display: none;
+}
+
+.show {
+  display: block;
 }
