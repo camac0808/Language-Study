@@ -29,7 +29,7 @@ function Home() {
     }
   };
 
-  useEffect((  ) => {
+  useEffect(() => {
     getGames();
     console.log(currentPage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,7 +52,7 @@ function Home() {
   console.log(slug);
   return (
     <div>
-      <Sidebar />
+      <Sidebar homeClick={homeClick}/>
       <Header count={count} inputValue={inputValue} homeClick={homeClick}/>
       <div className="container">
         {loading ? (
