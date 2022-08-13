@@ -15,6 +15,11 @@ li {
   list-style: none;
 }
 
+.home {
+  padding-top: 150px;
+  position: relative;
+}
+
 .loading {
   display: flex;
   flex-direction: column;
@@ -52,15 +57,27 @@ header {
   align-items: center;
   width: 100%;
   height: 107px;
+  position: fixed;
+  z-index: 10;
 }
 
-header h1 {
-  color: #fff;
-  font-weight: 500;
-  white-space: nowrap;
+.header-home-icon {
+  color: white;
 }
 
-header h1:hover {
+.header-home-icon:hover {
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.header-hamburger-icon {
+  color: white;
+  margin-right: 17px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.header-hamburger-icon:hover {
   color: #ccc;
   transition: all 0.3s ease;
 }
@@ -89,7 +106,7 @@ header h1:hover {
   transition: 0.3s ease all;
 }
 
-.game-search:hover input{
+.game-search:hover input {
   background-color: white;
 }
 
@@ -122,17 +139,16 @@ header h1:hover {
 
 .main-title {
   text-align: left;
-  margin: 50px 0;
   font-weight: bold;
   color: white;
-  font-size: 60px;  
+  font-size: 60px;
 }
 
 .login {
   text-decoration: none;
   text-align: center;
   width: 100%;
-  background: #f2305a;
+  background: #FC427B;
   padding: 15px 0;
   border-radius: 50px;
   color: #fff;
@@ -166,15 +182,6 @@ header h1:hover {
   transform-origin: top;
 }
 
-@keyframes login-blur {
-  from {
-    transform: translate(0) rotate(45deg);
-  }
-  to {
-    transform: translateX(370px) rotate(45deg);
-  }
-}
-
 .login:hover {
   transform: translateY(-3px);
   color: rgb(240, 240, 240);
@@ -182,43 +189,67 @@ header h1:hover {
 
 /* 사이드 메뉴바 */
 .sidebar {
-  background-color: #242226;
+  background-color: #383838;
   width: 250px;
-  padding: 70px 20px 20px 20px;
-  height: 100vh;
+  padding: 90px 20px 20px 30px;
+  height: 100%;
   position: fixed;
-  z-index: 1;
   display: flex;
   flex-direction: column;
   text-transform: uppercase;
   font-weight: bold;
+  left: -250px;
+  top: 0;
+  z-index: 1;
+  transition: all 0.5s;
+}
+
+.sidebar.active {
+  left: 0;
 }
 
 .sidebar a {
   color: white;
-  font-size: 2em;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
 }
 
 .sidebar a:hover {
   color: #ccc;
+  background-color: #222;
   transition: all 0.3s ease;
 }
 
 .sidebar-menu {
-  margin-bottom: 20px;
   color: white;
 }
 
 .sidebar-menu ul {
-  padding-left: 5px; 
+  padding-left: 5px;
 }
 
-.sidebar-menu span{
-  font-size: 1.5em;
+.sidebar-menu span {
+  cursor: pointer;
 }
 
-.sidebar-menu span:hover{
+.sidebar-menu span:hover {
+  color: #ccc;
+  transition: all 0.3s ease;
+  background-color: #222;
+
+}
+
+
+.sidebar-xmark-icon {
+  position: absolute;
+  top: 38px;
+  left: 180px;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar-xmark-icon:hover {
   color: #ccc;
   transition: all 0.3s ease;
 }
@@ -229,7 +260,6 @@ header h1:hover {
   grid-template-columns: repeat(4, 1fr);
   gap: 25px 20px;
 }
-
 
 .game {
   width: 300px;
@@ -325,15 +355,6 @@ header h1:hover {
   animation: fade 1s;
 }
 
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .game-info-about > li {
   margin: 10px 0;
   display: flex;
@@ -364,10 +385,43 @@ header h1:hover {
 /* more details */
 .details {
   color: white;
+  display: flex;
+  flex-direction: row;
+  padding-top: 100px;
+  max-width: 1200px;
 }
 
 .details img {
-  width: 500px;
+  width: 200px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.details video {
+  border-radius: 5px;
+  margin: 5px;
+  overflow: hidden;
+}
+
+.details-descriptions {
+  width: 600px;
+}
+
+.details-descriptions a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  padding-bottom: 10px;
+}
+
+.details-descriptions a:hover {
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.details-images {
+  width: 600px;
+  margin-left: 50px;
 }
 
 /* 파지네이션 */
@@ -395,7 +449,7 @@ header h1:hover {
 
 /* 로그인 페이지 */
 .form-signin {
-  max-width: 400px;
+  max-width: 450px;
   margin: 150px auto;
   display: flex;
   align-items: center;
@@ -406,11 +460,9 @@ header h1:hover {
   width: 320px;
   text-align: center;
   border: 1px solid white;
-  padding: 20px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 40px 30px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(255, 255, 255);
+  box-shadow: 0 0 5px rgba(255, 255, 255);
 }
 
 .form-signin .checkbox {
@@ -451,4 +503,48 @@ footer p {
 
 .show {
   display: block;
+}
+
+.fade-in {
+  animation: fade 0.5s;
+}
+
+.fade-out {
+  animation: fade-out 0.5s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes login-blur {
+  from {
+    transform: translate(0) rotate(45deg);
+  }
+  to {
+    transform: translateX(370px) rotate(45deg);
+  }
+}
+
+@keyframes showMenu {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0%;
+  }
 }

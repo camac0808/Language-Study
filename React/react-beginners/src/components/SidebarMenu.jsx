@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 function SidebarMenu({ menuTitle }) {
   const API_KEY = "ea46da76162f45f8a179463a877ff12e";
   const [names, setNames] = useState([]);
-  const [menuState, setMenuState] = useState(false);
 
   const getMenu = async () => {
     try {
@@ -26,13 +25,6 @@ function SidebarMenu({ menuTitle }) {
       <span>
         {menuTitle}
       </span>
-      <ul>
-        {menuState
-          ? names.map((item) => {
-              return <li>{item.name}</li>;
-            })
-          : null}
-      </ul>
     </div>
   );
 }

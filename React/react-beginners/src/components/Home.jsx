@@ -4,7 +4,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Pagination from "./Pagination";
 import Header from "./Header";
-import Sidebar from "./Sidebar";
+
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -12,8 +12,9 @@ function Home() {
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [slug, setSlug] = useState("");
-
   const API_KEY = "ea46da76162f45f8a179463a877ff12e";
+
+
   const getGames = async () => {
     try {
       const response = await fetch(
@@ -49,12 +50,12 @@ function Home() {
     setCurrentPage(1);
   }
 
+
   console.log(slug);
   return (
     <div>
-      <Sidebar homeClick={homeClick}/>
       <Header count={count} inputValue={inputValue} homeClick={homeClick}/>
-      <div className="container">
+      <div className="home container">
         {loading ? (
           <div className="loading">
             <h1 >Loading...</h1>
