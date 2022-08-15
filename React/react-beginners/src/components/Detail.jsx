@@ -5,7 +5,7 @@ export default function Detail() {
   const { id } = useParams();
   const [details, setDetails] = useState("");
   const [movies, setMovies] = useState("");
-  const API_KEY = "ea46da76162f45f8a179463a877ff12e";
+  const API_KEY = "e715e4b774ae45a4a9dd7302c6fdc0ca";
 
   useEffect(() => {
     const getDetails = async () => {

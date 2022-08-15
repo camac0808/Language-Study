@@ -5,21 +5,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Pagination from "./Pagination";
 import Header from "./Header";
 
-
 function Home() {
   const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState("");
   const [games, setGames] = useState([]);
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [slug, setSlug] = useState("");
-  const API_KEY = "ea46da76162f45f8a179463a877ff12e";
+  const [sideState, setSideState] = useState(false);
+ 
 
+  const API_KEY = "e715e4b774ae45a4a9dd7302c6fdc0ca";
 
   const getGames = async () => {
     try {
       const response = await fetch(
-        `https://api.rawg.io/api/games?page=${currentPage}&search=${slug}&page_size=20&key=${API_KEY}`
+        `https://api.rawg.io/api/games?${category}&page=${currentPage}&search=${slug}&page_size=20&key=${API_KEY}`
       );
+
       const data = await response.json();
       setGames(data.results);
       setCount(data.count);
@@ -29,12 +32,6 @@ function Home() {
       console.error(err);
     }
   };
-
-  useEffect(() => {
-    getGames();
-    console.log(currentPage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage, slug]);
 
   function pageMove(page) {
     setCurrentPage(page);
@@ -47,24 +44,52 @@ function Home() {
   function homeClick(event) {
     event.preventDefault();
     setSlug("");
+    setCategory("")
     setCurrentPage(1);
   }
 
+  /* api empty query parameter 처리 방법 몰라서 일단 setCategory에 query 자체를 넣어버림 */
+  function categoryClick(e, param) {
+    e.preventDefault();
+    setCategory(`genres=${param.slug}`);
+    setSlug(param.slug);
+    toggle();
+    console.log(category);
+  }
+  
+  useEffect(() => {
+    getGames();
+    console.log(currentPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage, slug, category]);
 
-  console.log(slug);
+
+  function toggle() {
+    setSideState((prev) => !prev);
+  }
+
   return (
     <div>
-      <Header count={count} inputValue={inputValue} homeClick={homeClick}/>
+      <Header
+        count={count}
+        inputValue={inputValue}
+        homeClick={homeClick}
+        categoryClick={categoryClick}
+        toggleClick={toggle}
+        sideState={sideState}
+      />
       <div className="home container">
         {loading ? (
           <div className="loading">
-            <h1 >Loading...</h1>
+            <h1>Loading...</h1>
             <div className="fa-3x">
-              <FontAwesomeIcon icon={faSpinner} spin style={{color: "white"}}/>
+              <FontAwesomeIcon icon={faSpinner} spin style={{ color: "white" }} />
             </div>
           </div>
         ) : (
-          <h2 className="main-title" data-aos="fade-up">{slug !== "" ? `"${slug}" search results...` : "All Games"}</h2>
+          <h2 className="main-title" data-aos="fade-up">
+            {slug !== "" ? `${slug} results...` : "All Games"}
+          </h2>
         )}
         <main>
           <div className="game-container">
@@ -85,8 +110,8 @@ function Home() {
           </div>
         </main>
         {loading ? null : (
-            <Pagination pageClick={pageMove} count={count} currentPage={currentPage} />
-          )}
+          <Pagination pageClick={pageMove} count={count} currentPage={currentPage} />
+        )}
       </div>
     </div>
   );

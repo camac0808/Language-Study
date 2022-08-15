@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 
-function Game({ id, name, image, genres, platforms, metacriticScore, released, rating }) {
+function Game({ id, name, image, genres, platforms, metacriticScore, released }) {
   const [infoHover, setInfoHover] = useState(false);
 
   return (

@@ -48,7 +48,7 @@ li {
 }
 
 header {
-  background-color: #242226;
+  background-color: rgb(34, 34, 34);
   padding: 16px 32px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
   display: flex;
@@ -148,8 +148,8 @@ header {
   text-decoration: none;
   text-align: center;
   width: 100%;
-  background: #FC427B;
-  padding: 15px 0;
+  background: #fe4066;
+  padding: 13px 0;
   border-radius: 50px;
   color: #fff;
   transition: all ease 0.2s;
@@ -161,9 +161,9 @@ header {
   position: relative;
   overflow: hidden;
   /* font-family: "McLaren", cursive; */
-  font-weight: 500;
+  font-weight: bold;
   border: none;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .login::after {
@@ -189,7 +189,7 @@ header {
 
 /* 사이드 메뉴바 */
 .sidebar {
-  background-color: #383838;
+  background-color: rgb(30, 30, 30);
   width: 250px;
   padding: 90px 20px 20px 30px;
   height: 100%;
@@ -209,16 +209,15 @@ header {
 }
 
 .sidebar a {
-  color: white;
+  color: #fe4066;
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 1.5em;
 }
 
-.sidebar a:hover {
-  color: #ccc;
-  background-color: #222;
+.sidebar .homeButton:hover {
   transition: all 0.3s ease;
+  background-color: #222;
 }
 
 .sidebar-menu {
@@ -229,15 +228,22 @@ header {
   padding-left: 5px;
 }
 
-.sidebar-menu span {
+.sidebar-menu-title {
   cursor: pointer;
 }
 
-.sidebar-menu span:hover {
-  color: #ccc;
+.sidebar-menu-title:hover {
   transition: all 0.3s ease;
   background-color: #222;
+}
 
+.sidebar-menu li {
+  font-size: 0.7em;
+}
+
+.sidebar-menu li:hover {
+  transition: all 0.3s ease;
+  background-color: #222;
 }
 
 
@@ -252,6 +258,14 @@ header {
 .sidebar-xmark-icon:hover {
   color: #ccc;
   transition: all 0.3s ease;
+}
+
+.sidebar-down-icon {
+  transition: all 0.3s;
+}
+
+.sidebar-down-icon.rotate {
+  transform: rotate(90deg);
 }
 
 /* main container */
@@ -513,6 +527,8 @@ footer p {
   animation: fade-out 0.5s;
 }
 
+
+
 @keyframes fade {
   from {
     opacity: 0;
@@ -537,14 +553,5 @@ footer p {
   }
   to {
     transform: translateX(370px) rotate(45deg);
-  }
-}
-
-@keyframes showMenu {
-  from {
-    left: -100%;
-  }
-  to {
-    left: 0%;
   }
 }

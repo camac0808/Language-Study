@@ -1,28 +1,31 @@
-import SidebarMenu from "./SidebarMenu";
+// import SidebarMenu from "./SidebarMenu";
 import { Link } from "react-router-dom";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SidebarMenu from './SidebarMenu';
 
-function Sidebar({ homeClick, sideClick, toggleClick }) {
+function Sidebar({ homeClick, sideState, toggleClick, categoryClick }) {
+  
+  
   return (
     <div>
-      <div className={`sidebar ${sideClick ? "active" : ""}`}>
+      <div className={`sidebar ${sideState ? "active" : ""}`}>
         <FontAwesomeIcon
           className="sidebar-xmark-icon fa-2xl"
           icon={faXmark}
           onClick={toggleClick}
         />
-        <Link to={`/`} style={{ textDecoration: "none" }} onClick={homeClick}>
+        <Link to={`/`} style={{ textDecoration: "none" }} onClick={homeClick} className="homeButton">
           Home
         </Link>
-        <Link to={"/genres"} style={{ textDecoration: "none" }}>
-          <SidebarMenu menuTitle={"genres"} />
+        <Link to={"/"} style={{ textDecoration: "none" }} >
+          <SidebarMenu title='genres' categoryClick={categoryClick}/>
         </Link>
-        <Link to={"/platforms"} style={{ textDecoration: "none" }}>
-          <SidebarMenu menuTitle={"platforms"} />
+        <Link to={"/"} style={{ textDecoration: "none" }}>
+          <SidebarMenu title='platforms' categoryClick={categoryClick} />
         </Link>
-        <Link to={"/stores"} style={{ textDecoration: "none" }}>
-          <SidebarMenu menuTitle={"stores"} />
+        <Link to={"/"} style={{ textDecoration: "none" }}>
+          <SidebarMenu title='stores' categoryClick={categoryClick}/>
         </Link>
       </div>
     </div>

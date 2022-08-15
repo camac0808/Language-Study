@@ -3,23 +3,21 @@ import { Link } from "react-router-dom";
 import { faHouse, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Sidebar from "./Sidebar";
-import { useState } from 'react';
 
-function Header({ count, inputValue, homeClick }) {
-  const [value, setValue] = useState(false);
-  
-  function toggle() {
-    setValue(prev => !prev);
-  }
-  
+function Header({ count, inputValue, homeClick, categoryClick, toggleClick, sideState }) {
   return (
     <header>
       <FontAwesomeIcon
         className="header-hamburger-icon fa-xl"
         icon={faBars}
-        onClick={toggle}
+        onClick={toggleClick}
       />
-      <Sidebar homeClick={homeClick} sideClick={value ? 1 : 0} toggleClick={toggle}/>
+      <Sidebar
+        homeClick={homeClick}
+        sideState={sideState ? 1 : 0}
+        toggleClick={toggleClick}
+        categoryClick={categoryClick}
+      />
       <Link to={`/`} style={{ textDecoration: "none" }} onClick={homeClick}>
         <FontAwesomeIcon className="header-home-icon fa-xl" icon={faHouse} />
       </Link>
