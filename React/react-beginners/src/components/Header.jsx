@@ -4,7 +4,7 @@ import { faHouse, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Sidebar from "./Sidebar";
 
-function Header({ count, inputValue, homeClick, categoryClick, toggleClick, sideState }) {
+function Header({ count, inputValue, homeClick, headerHomeClick, categoryClick, toggleClick, sideState }) {
   return (
     <header>
       <FontAwesomeIcon
@@ -18,7 +18,7 @@ function Header({ count, inputValue, homeClick, categoryClick, toggleClick, side
         toggleClick={toggleClick}
         categoryClick={categoryClick}
       />
-      <Link to={`/`} style={{ textDecoration: "none" }} onClick={homeClick}>
+      <Link to={`/`} style={{ textDecoration: "none" }} onClick={headerHomeClick}>
         <FontAwesomeIcon className="header-home-icon fa-xl" icon={faHouse} />
       </Link>
       <Search count={count} inputValue={inputValue} />

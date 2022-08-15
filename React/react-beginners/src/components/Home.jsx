@@ -45,6 +45,14 @@ function Home() {
     event.preventDefault();
     setSlug("");
     setCategory("")
+    toggle();
+    setCurrentPage(1);
+  }
+
+  function headerHomeClick(event){
+    event.preventDefault();
+    setSlug("");
+    setCategory("")
     setCurrentPage(1);
   }
 
@@ -74,6 +82,7 @@ function Home() {
         count={count}
         inputValue={inputValue}
         homeClick={homeClick}
+        headerHomeClick={headerHomeClick}
         categoryClick={categoryClick}
         toggleClick={toggle}
         sideState={sideState}
