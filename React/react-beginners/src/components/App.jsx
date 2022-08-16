@@ -11,11 +11,11 @@ import Signup from './Signup';
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename={`${process.env.PUBLIC_URL}/`}> 
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/games/:id" element={<Detail />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path={`/`} element={<Home />} />
+          <Route path={`/games/:id`} element={<Detail />} />
+          <Route path={`/signup`} element={<Signup />} />
         </Routes>
       </Router>
     </div>

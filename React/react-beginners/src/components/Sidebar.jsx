@@ -15,16 +15,16 @@ function Sidebar({ homeClick, sideState, toggleClick, categoryClick }) {
           icon={faXmark}
           onClick={toggleClick}
         />
-        <Link to={`/`} style={{ textDecoration: "none" }} onClick={homeClick} className="homeButton">
+        <Link to={`/React-project`} style={{ textDecoration: "none" }} onClick={homeClick} className="homeButton">
           Home
         </Link>
-        <Link to={"/"} style={{ textDecoration: "none" }} >
+        <Link to={"/React-project"} style={{ textDecoration: "none" }} >
           <SidebarMenu title='genres' categoryClick={categoryClick}/>
         </Link>
-        <Link to={"/"} style={{ textDecoration: "none" }}>
+        <Link to={"/React-project"} style={{ textDecoration: "none" }}>
           <SidebarMenu title='platforms' categoryClick={categoryClick} />
         </Link>
-        <Link to={"/"} style={{ textDecoration: "none" }}>
+        <Link to={"/React-project"} style={{ textDecoration: "none" }}>
           <SidebarMenu title='stores' categoryClick={categoryClick}/>
         </Link>
       </div>

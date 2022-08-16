@@ -20,7 +20,7 @@ const Pagination = ({ pageClick, count, currentPage }) => {
   for (let i = firstPage; i <= lastPage; i++) {
     paginationHtml.push(
       <li className={currentPage === i ? "page-item active" : "page-item"} key={i}>
-        <Link to={"/"} className="page-link pageNum" onClick={(event) => pageClick(i)}>
+        <Link to={"/React-project"} className="page-link pageNum" onClick={(event) => pageClick(i)}>
           {i}
         </Link>
       </li>
@@ -35,7 +35,7 @@ const Pagination = ({ pageClick, count, currentPage }) => {
             className={`page-item ${firstPage === 1 ? "hidden" : ""}`}
             onClick={() => pageClick(1)}
           >
-            <Link to={"/"} className="page-link">
+            <Link to={"/React-project"} className="page-link">
               <FontAwesomeIcon icon={faAnglesLeft} />
             </Link>
           </li>
@@ -43,7 +43,7 @@ const Pagination = ({ pageClick, count, currentPage }) => {
             className={`page-item ${firstPage === 1 ? "hidden" : ""}`}
             onClick={() => pageClick(prev)}
           >
-            <Link to={"/"} className="page-link">
+            <Link to={"/React-project"} className="page-link">
               <FontAwesomeIcon icon={faAngleLeft} />
             </Link>
           </li>
@@ -52,7 +52,7 @@ const Pagination = ({ pageClick, count, currentPage }) => {
             className={`page-item ${lastPage === totalPage ? "hidden" : ""}`}
             onClick={() => pageClick(next)}
           >
-            <Link to={"/"} className="page-link">
+            <Link to={"/React-project"} className="page-link">
               <FontAwesomeIcon icon={faAngleRight} />
             </Link>
           </li>
@@ -60,7 +60,7 @@ const Pagination = ({ pageClick, count, currentPage }) => {
             className={`page-item ${lastPage === totalPage ? "hidden" : ""}`}
             onClick={() => pageClick(totalPage)}
           >
-            <Link to={"/"} className="page-link">
+            <Link to={"/React-project"} className="page-link">
               <FontAwesomeIcon icon={faAnglesRight} />
             </Link>
           </li>
