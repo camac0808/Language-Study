@@ -18,11 +18,11 @@ function Header({ count, inputValue, homeClick, headerHomeClick, categoryClick, 
         toggleClick={toggleClick}
         categoryClick={categoryClick}
       />
-      <Link to={`/React-project`} style={{ textDecoration: "none" }} onClick={headerHomeClick}>
+      <Link to={`/`} style={{ textDecoration: "none" }} onClick={headerHomeClick}>
         <FontAwesomeIcon className="header-home-icon fa-xl" icon={faHouse} />
       </Link>
       <Search count={count} inputValue={inputValue} />
-      <Link to={`/React-project/signup`} className="login">
+      <Link to={`/signup`} className="login">
         Login
       </Link>
     </header>
