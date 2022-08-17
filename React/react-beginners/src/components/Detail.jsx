@@ -7,6 +7,7 @@ export default function Detail() {
   const [movies, setMovies] = useState("");
   const API_KEY = "e715e4b774ae45a4a9dd7302c6fdc0ca";
 
+  // detail 가져오기
   useEffect(() => {
     const getDetails = async () => {
       try {
