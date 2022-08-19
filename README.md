@@ -3,7 +3,7 @@
 
 RAWG gaming api를 사용하여 제작하였습니다.<br>
 모든 게임을 검색하고 상세 정보를 확인할 수 있습니다.<br><br>
-보러가기: <https://camac0808.github.io/React-project>
+### 보러가기: <https://camac0808.github.io/React-project>
 
 ![메인페이지](mainpage.PNG)
 
