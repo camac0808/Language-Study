@@ -16,7 +16,7 @@ function SidebarMenu({ title, categoryClick }) {
       );
       const data = await response.json();
       setCategorys(data.results);
-      console.log(data);
+      console.log(categorys);
     } catch (err) {
       console.log(err);
     }
@@ -25,7 +25,7 @@ function SidebarMenu({ title, categoryClick }) {
   function dataCategory(e, param) {
     categoryClick(e, param);
     setShowSideCategory(false);
-    console.log(param);
+    console.log(e, param);
   }
 
   function toggleSideCategory() {
@@ -57,11 +57,10 @@ function SidebarMenu({ title, categoryClick }) {
                 className="sidebar-category"
                 key={category.id}
                 onClick={(e) => {
-                  const categoryClass = e.target.parentElement.className;
-                  dataCategory(e, {
-                    category: categoryClass,
-                    slug: category.slug,
-                  });
+                  // categoryParentName : genres, category.slug : actions..
+                  // const categoryParentName = e.target.parentElement.className;
+                  dataCategory(e, { category: title, detailedCategory: category.slug, id: category.id });
+                  console.log(title, category.slug)
                 }}
               >
                 {category.slug}

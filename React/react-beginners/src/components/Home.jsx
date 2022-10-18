@@ -8,30 +8,15 @@ import Header from "./Header";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("");
+  const [detailedCategory, setDetailedCategory] = useState("");
+  const [platformCategory, setPlatformCategory] = useState("");
   const [games, setGames] = useState([]);
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [slug, setSlug] = useState("");
   const [sideState, setSideState] = useState(false);
- 
 
   const API_KEY = "e715e4b774ae45a4a9dd7302c6fdc0ca";
-
-  const getGames = async () => {
-    try {
-      const response = await fetch(
-        `https://api.rawg.io/api/games?${category}&page=${currentPage}&search=${slug}&page_size=20&key=${API_KEY}`
-      );
-
-      const data = await response.json();
-      setGames(data.results);
-      setCount(data.count);
-      setLoading(false);
-      console.log(data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   function pageMove(page) {
     setCurrentPage(page);
@@ -44,33 +29,53 @@ function Home() {
   function homeClick(event) {
     event.preventDefault();
     setSlug("");
-    setCategory("")
+    setCategory("");
+    setDetailedCategory("");
     toggle();
     setCurrentPage(1);
   }
 
-  function headerHomeClick(event){
+  function headerHomeClick(event) {
     event.preventDefault();
     setSlug("");
-    setCategory("")
+    setCategory("");
+    setDetailedCategory("");
+    setPlatformCategory("");
     setCurrentPage(1);
   }
 
-  /* api empty query parameter 처리 방법 몰라서 일단 setCategory에 query 자체를 넣어버림 */
+  // platform은 query value값을 숫자로 받아서 따로 id 지정해줬다
   function categoryClick(e, param) {
     e.preventDefault();
-    setCategory(`genres=${param.slug}`);
-    setSlug(param.slug);
+    setCategory(param.category === "platforms" ? "parent_platforms" : param.category);
+    setDetailedCategory(param.detailedCategory);
+    setPlatformCategory(param.id);
+    setCurrentPage(1);
     toggle();
-    console.log(category);
+    console.log(category, detailedCategory, platformCategory);
   }
-  
-  useEffect(() => {
-    getGames();
-    console.log(currentPage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage, slug, category]);
 
+  useEffect(() => {
+    async function getGames() {
+      try {
+        const response = await fetch(
+          `https://api.rawg.io/api/games?${category}=${
+            category === "genres" ? detailedCategory : platformCategory
+          }&page=${currentPage}&search=${slug}&page_size=20&key=${API_KEY}`
+        );
+        console.log(response);
+        const data = await response.json();
+        setGames(data.results);
+        setCount(data.count);
+        setLoading(false);
+        console.log(data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    console.log(currentPage);
+    getGames();
+  }, [currentPage, slug, category, detailedCategory, platformCategory]);
 
   function toggle() {
     setSideState((prev) => !prev);
@@ -97,7 +102,11 @@ function Home() {
           </div>
         ) : (
           <h2 className="main-title" data-aos="fade-up">
-            {slug !== "" ? `${slug} results...` : "All Games"}
+            {slug
+              ? `${slug.toUpperCase()} results...`
+              : detailedCategory.toUpperCase()
+              ? `${detailedCategory.toUpperCase()} results...`
+              : "All Games"}
           </h2>
         )}
         <main>
