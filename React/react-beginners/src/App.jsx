@@ -10,7 +10,7 @@ import "./style.css";
 function App() {
   return (
     <div className="App">
-      <Router basename={`${process.env.PUBLIC_URL}/`}>
+      <Router basename={`${process.env.PUBLIC_URL}`}>
         <Routes>
           <Route path={`/`} element={<Home />} />
           <Route path={`/games/:id`} element={<Detail />} />
