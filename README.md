@@ -17,28 +17,28 @@ RAWG gaming api를 사용하여 제작하였습니다.<br>
 ## 프로젝트의 기능 설명
 
 ### 1. api fetch loading시 간단한 이모티콘 애니메이션을 추가
-![로딩](loading.gif)
+![로딩](./React/react-beginners/src/assets/loading.gif)
 
 ### 2. header search 기능 및 hover transition 추가
-![헤더](searchbar.gif)
+![헤더](./React/react-beginners/src/assets/searchbar.gif)
 
 ### 3. hamburger button을 눌러서 sidebar 나오는 transition 구현
-![사이드바](sidebar.gif)
+![사이드바](./React/react-beginners/src/assets/sidebar.gif)
 
 ### 4. login button에 간단한 hover transition과 blur 넣어서 빛나는듯한 효과 구현
-![로그인버튼](login-blur.gif)
+![로그인버튼](./React/react-beginners/src/assets/login-blur.gif)
 
 ### 5. boot-strap을 이용하여 login-page 간단하게 구현 (로그인은 되지 않습니다)
-![로그인페이지](loginpage.PNG)
+![로그인페이지](./React/react-beginners/src/assets/loginpage.PNG)
 
 ### 6. 첫페이지 랜딩시 AOS 라이브러리를 사용하여 game-card 및 title에 fade 효과 구현
-![랜딩페이지](aos.gif)
+![랜딩페이지](./React/react-beginners/src/assets/aos.gif)
 
 ### 7. game-card에 마우스 hover시 상세페이지로 연결되는 link와 간단한 상세정보 하단에 나오도록 구현
-![상세페이지](detailpage.gif)
+![상세페이지](./React/react-beginners/src/assets/detailpage.gif)
 
 ### 8. 하단에 pagination 구현
-![페이지네이션](pagination.PNG)
+![페이지네이션](./React/react-beginners/src/assets/pagination.PNG)
 
 ## 배포
 ```sh
@@ -47,8 +47,7 @@ npm run build
 npm run deploy
 ```
 
-## 향후 업데이트 예정
-시간이 너무 지체되서 취업하면서 계속 수정할 예정입니다!
+## 2024/05/08 업데이트 예정
 
 * 반응형 구현
 * node.js 활용하여 cache이용. 페이지 뒤로가기 앞으로가기
